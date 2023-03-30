@@ -50,7 +50,7 @@ void q_short(int low, int high)
 	//Outher conntainning elements greather than pivot
 
 	pivot = arr[low];								// Langkah 2
-	
+
 	i = low + 1;									// Langkah 3
 	j = high;										// Langkah 4
 
@@ -61,7 +61,7 @@ void q_short(int low, int high)
 		while ((arr[i] <= pivot) && (i <= high))	// Langkah 5
 		{
 			i++;									// Langkah 6
-				cmp_count++;
+			cmp_count++;
 		}
 		cmp_count++;
 		//search for an element less than or equal to pivot
@@ -72,7 +72,7 @@ void q_short(int low, int high)
 		}
 		cmp_count++;
 
-
+		// Langkah 9
 		if (i < j) // if the greater element is on the left of the element
 		{
 			//swap the element at index i whit the element at index j
@@ -80,5 +80,33 @@ void q_short(int low, int high)
 			mov_count++;
 		}
 	}
+	//j now containt the index of the last element in the sorted list
+	if (low < j)									// Langkah 11
+	{
+		//move the pivot to its correct position in the list
+		swap(low, j);
+		mov_count++;
+	}
+	//sort the list on the left of pivot using quck sort
+	q_short(low, j - 1);							// Langkah 12
 
+	//sort the list on the right of pivot using quick sort
+	q_short(j + 1, high);
+
+
+}
+
+
+void display() {
+	cout << "\n-------------------" << endl;
+	cout << "Sorted Array" << endl;
+	cout << "---------------------" << endl;
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << " ";
+	}
+
+	cout << "\n\nNumber of comparasions: " << cmp_count << endl;
+	cout << "Numbre of date movements: " << mov_count << endl;
 }
