@@ -72,7 +72,7 @@ void q_short(int low, int high)
 		}
 		cmp_count++;
 
-		// Langkah 9
+													// Langkah 9
 		if (i < j) // if the greater element is on the left of the element
 		{
 			//swap the element at index i whit the element at index j
@@ -91,7 +91,7 @@ void q_short(int low, int high)
 	q_short(low, j - 1);							// Langkah 12
 
 	//sort the list on the right of pivot using quick sort
-	q_short(j + 1, high);
+	q_short(j + 1, high);							// Langkah 13
 
 
 }
@@ -109,4 +109,17 @@ void display() {
 
 	cout << "\n\nNumber of comparasions: " << cmp_count << endl;
 	cout << "Numbre of date movements: " << mov_count << endl;
+}
+
+
+int main()
+{
+
+	input();
+	//Sort the array using quick sort
+	q_short(0, n - 1);
+	display();
+	system("pause");
+
+	return 0;
 }
